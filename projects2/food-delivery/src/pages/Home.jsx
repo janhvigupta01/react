@@ -17,6 +17,7 @@ const Home = () => {
       setCate(newList)
     }
   }
+  let items-useSelector(state=>)
   return (
     <div className="bg-slate-200 w-full min-h-screen">
       <Nav />
@@ -43,7 +44,7 @@ const Home = () => {
           />
         ))}
       </div>
-      <div className={`w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 ${showCart?"translate-x-0":"translate-x-full"}`}>
+      <div className={`w-full md:w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 ${showCart?"translate-x-0":"translate-x-full"}`}>
         <header className="w-full flex justify-between items-center">
         <span className="text-green-400 text-[18px] font-semibold ">Order items</span>
         <RxCross2 className=" w-[30px] h-[30px] text-green-400 text-[18px] font-semibold cursor-pointer hover:text-gray-600 " onClick={()=>setShowCart(false)} />
