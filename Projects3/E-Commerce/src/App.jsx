@@ -1,10 +1,20 @@
 import React from 'react'
-
+import Home from './pages/Home'
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+  <BrowserRouter>
+  <Nav/>
+  <Routes>
+    <Route path="/" element={<Home/>}/>
+  </Routes>
+  <Footer/>
+  </BrowserRouter>
+    </>
+    
   )
 }
 
