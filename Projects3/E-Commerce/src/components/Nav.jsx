@@ -1,31 +1,53 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { FaShopify } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 import { CiShoppingCart } from "react-icons/ci";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { Link } from "react-router-dom";
 const Nav = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-    <div className="bg-black w-full h-[60px] flex justify-between items-center px-10 md:px-16">
-      <div className="w-[20%] md:w-[10%] h-full  flex items-center justify-around text-2xl font-semibold text-white">
-        <FaShopify />
-        <p>V-Shop</p>
+      <div className="text-white bg-black w-full h-[60px] flex items-center justify-between gap-4 px-5 lg:px-20">
+        <div
+          onClick={() => navigate("/")}
+          className=" w-[30%]  flex items-center gap-2  "
+        >
+          <FaShopify className="  text-xl" />
+          <p className="text-gray-100 font-medium text-xl">V-Shop</p>
+        </div>
+        <div className="w-[50%]  h-[80%] rounded-full bg-white text-black px-4 lg:px-10 flex items-center  ">
+          <input
+            type="text"
+            placeholder="search..."
+            className="rounded-full w-full h-full text-black outline-none text-xl"
+          />
+          <IoMdSearch className="text-2xl" />
+        </div>
+        <div className=" relative w-[20%] h-full flex items-center justify-end ">
+          <CiShoppingCart className="text-2xl font-bold" />
+          <p className="absolute right-0 top-1">0</p>
+        </div>
       </div>
-      <div className="w-[350px] md:w-[600px] flex items-center gap-11 md:gap-60 bg-white rounded-4xl px-4">
 
-        <input type="text" placeholder="search for items" className="  w-[250px] h-9 flex items-center md:w-[300px]   outline-none "/>
-        <IoMdSearch className=" font-semibold text-2xl"/>
+      <div className="w-full h-[35px] bg-gray-800 text-white flex justify-center items-center gap-4 shadow-gray-400 shadow-lg font-semibold">
+        <Link to="/">
+          <div className="cursor-pointer">Home</div>
+        </Link>
+        <Link to="/shop">
+          <div className="cursor-pointer">Shop</div>
+        </Link>
+        <Link to="/cart">
+          <div className="cursor-pointer">Cart</div>
+        </Link>
+        <Link to="/contact">
+          <div className="cursor-pointer">Contact</div>
+        </Link>
       </div>
-      <div className="w-10  h-[60px] flex justify-center items-center rounded-md shadow-xl relative cursor-pointer">
-       <CiShoppingCart className="text-white h-[30px] w-[30px] " />
-       <span className="absolute top-0 right-0 text-white font-semibold">0</span>
-      </div>
-    </div>
-    <div className="w-full h-[30px] bg-gray-900 text-white flex justify-center items-center gap-4 shadow-gray-400 shadow-lg">
-        <div>Home</div>
-        <div>Shop</div>
-        <div>Cart</div>
-        <div>Contact</div>
-    </div>
     </>
   );
 };

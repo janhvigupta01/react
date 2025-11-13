@@ -1,33 +1,37 @@
 import React, { useState } from "react";
-import bg from "../assets/bg0.gif";
 import { category } from "../Category";
-import Card from "../components/card";
 import { dummydata } from "../dummydata";
-const Home = () => {
+import Card from "../components/card";
+import { FaShopify } from "react-icons/fa";
+const Shop = () => {
   let [cate, setCate] = useState(dummydata);
   function filterProducts(category) {
+  if(category==="All"){
+    setCate(dummydata)
+  }else{
     const updatedata = dummydata.filter((item) => item.category === category);
     setCate(updatedata);
   }
+  }
+  
   return (
-    <>
-      <div className="w-full flex items-center justify-center mt-4">
-        <img
-          src={bg}
-          alt="Hero Banner"
-          className="w-[90%] h-auto max-w-[1500px] object-cover rounded-lg shadow-gray-300 shadow-xl sm:rounded-none md:rounded-lg"
-        />
-      </div>
+    <div className="w-full h-full">
+        <div className=" w-full h-12 text-4xl font-extrabold italic gap-2 mt-4 flex justify-center items-center">
+            <h1>Shop </h1>
+            <FaShopify/>
+        </div>
+        
       <div className="w-full py-6 flex flex-wrap items-center justify-center gap-8">
-        {category.slice(0, 5).map((item, index) => (
+        {category.map((item, index) => (
           <div
             key={index}
             className=" w-36  
-                 flex flex-col items-center justify-center text-center 
-                 p-2 md:p-5 bg-white 
-                 hover:scale-105 hover:shadow-lg hover:shadow-gray-400 
-                 transition-all duration-200 ease-in-out rounded-xl"
-          onClick={()=>filterProducts(item.name)}>
+                       flex flex-col items-center justify-center text-center 
+                       p-2 md:p-5 bg-white 
+                       hover:scale-105 hover:shadow-lg hover:shadow-gray-400 
+                       transition-all duration-200 ease-in-out rounded-xl"
+            onClick={() => filterProducts(item.name)}
+          >
             <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center mb-2">
               <img
                 src={item.image}
@@ -41,16 +45,13 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <h1 className="flex justify-center items-center text-4xl font-semibold m-4 mb-10">
-        Trending Products
-      </h1>
       <div className="flex flex-wrap gap-6 justify-center items-center">
-        {cate.slice(0, 7).map((item) => (
+        {cate.map((item) => (
           <Card name={item.name} price={item.price} image={item.image} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Home;
+export default Shop;
