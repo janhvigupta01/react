@@ -1,15 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import { FaShopify } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { CiShoppingCart } from "react-icons/ci";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import {useDispatch,useSelector} from "react-redux"
 const Nav = () => {
   const navigate = useNavigate();
-
+  let dispatch = useDispatch()
+  let items=useSelector(state=>state)
+  
   return (
     <>
       <div className="text-white bg-black w-full h-[60px] flex items-center justify-between gap-4 px-5 lg:px-20">
@@ -30,7 +32,7 @@ const Nav = () => {
         </div>
         <div className=" relative w-[20%] h-full flex items-center justify-end ">
           <CiShoppingCart className="text-2xl font-bold" />
-          <p className="absolute right-0 top-1">0</p>
+          <p className="absolute right-0 top-1">{items.cart.length}</p>
         </div>
       </div>
 
